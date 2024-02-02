@@ -80,3 +80,124 @@ body{
     }
   }
 }
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 100vh;
+  padding: 24px 18px;
+  background: $contrast-color;
+  border-right: 1px solid $grey-color;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  &__logo{
+    width: 44px;
+    height: 44px;
+    border: 1px solid $primary-transparent-color;
+    border-radius: 50%;
+    margin: 0 auto 0 auto;
+    @include flex();
+  }
+  &__line{
+    width: 32px;
+    height: 2px;
+    border-right: 1px;
+    background: $grey-color;
+  }
+  &__menu{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__link{
+    position: relative;
+    @include flex();
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    @include transition();
+    svg{
+      path{
+        @include transition();
+      }
+    }
+    &:hover{
+      background: $grey-color;
+      svg{
+        path{
+          fill: $primary-color;
+        }
+      }
+      .sidebar__tooltip{
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    &_active{
+      svg{
+        path{
+          fill: $blue-color;
+        }
+      }
+      &:hover{
+        svg{
+          path{
+            fill: $blue-color;
+          }
+        }
+      }
+    }
+  }
+  &__tooltip{
+    font-family: $font-family-Inter;
+    visibility: hidden;
+    font-size: $small-fz;
+    width: 120px;
+    background-color: $primary-color;
+    color: $contrast-color;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 6px;
+    left: 140%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    &::after{
+      content: "";
+      position: absolute;
+      top: 35%;
+      left: -5px;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent $primary-color transparent transparent;
+    }
+  }
+  &__bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  &__block{
+    position: relative;
+    @include flex();
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    @include transition();
+    &:hover{
+      background: $grey-color;
+    }
+  }
+}
