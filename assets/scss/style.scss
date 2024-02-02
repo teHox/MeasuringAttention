@@ -6,8 +6,77 @@
 html {
   scroll-behavior: smooth;
 }
+body{
+  background: #F8F8F8;
+}
 
 * {
   line-height: 130%;
 }
 
+//                LOGIN
+
+.login{
+  padding: 0 20px;
+  width: 100vw;
+  height: 100vh;
+  background: url("../img/login__bg.png");
+  background-size: cover;
+  @include flex();
+  flex-direction: column;
+  &__top{
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  &__logo{
+    width: 44px;
+    height: 44px;
+    border: 1px solid $primary-transparent-color;
+    border-radius: 50%;
+    margin: 0 auto 24px auto;
+    @include flex();
+  }
+  &__title{
+    font-family: $font-family-Inter;
+    font-size: $primary-fz;
+    color: $primary-color;
+    margin-bottom: 12px;
+  }
+  &__text{
+    font-family: $font-family-Inter;
+    font-size: $standart-fz;
+    color: $primary-color;
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 460px;
+    width: 100%;
+  }
+  &__button{
+    font-family: $font-family-Inter;
+    @include flex();
+    gap: 15px;
+    background: $contrast-color;
+    display: flex;
+    width: 100%;
+    padding: 20px 0;
+    border-radius: 5px;
+    font-size: $sub-title-fz;
+    color: $primary-transparent-color;
+  }
+  &__privacy{
+    font-family: $font-family-Inter;
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    font-size: 12px;
+    color: #000;
+  }
+  @media screen and (max-width: 450px) {
+    &__button{
+      font-size: $small-fz;
+    }
+  }
+}
