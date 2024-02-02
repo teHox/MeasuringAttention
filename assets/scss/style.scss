@@ -1,0 +1,13 @@
+@import "./nullstyle";
+@import "./variable";
+@import "./fonts";
+@import "./mixins";
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  line-height: 130%;
+}
+
