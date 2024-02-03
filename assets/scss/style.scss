@@ -7,14 +7,28 @@ html {
   scroll-behavior: smooth;
 }
 body{
-  background: #F8F8F8;
+  background: $background-color;
 }
 
 * {
   line-height: 130%;
+  color: $primary-color;
 }
 
+main{
+  display: flex;
+}
+
+.container{
+  max-width: 1260px;
+  width: 100%;
+  padding: 30px 10px 0 10px;
+  margin: 0 auto;
+}
+
+
 //                LOGIN
+
 
 .login{
   padding: 0 20px;
@@ -81,12 +95,16 @@ body{
   }
 }
 
+
+//                SIDEBAR
+
+
 .sidebar{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  position: absolute;
+  position: sticky;
   left: 0;
   top: 0;
   width: 80px;
@@ -96,6 +114,18 @@ body{
   border-right: 1px solid $grey-color;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  &__arrow{
+    @include flex();
+    position: absolute;
+    top: 32px;
+    right: -17px;
+    width: 28px;
+    height: 28px;
+    background: $contrast-color;
+    border: 1px solid $background-color;
+    border-radius: 8px;
+    cursor: pointer;
+  }
   &__logo{
     width: 44px;
     height: 44px;
@@ -159,11 +189,10 @@ body{
     font-family: $font-family-Inter;
     visibility: hidden;
     font-size: $small-fz;
-    width: 120px;
     background-color: $primary-color;
     color: $contrast-color;
     text-align: center;
-    padding: 5px 0;
+    padding: 5px 18px;
     border-radius: 6px;
     position: absolute;
     z-index: 1;
@@ -198,6 +227,212 @@ body{
     @include transition();
     &:hover{
       background: $grey-color;
+    }
+  }
+}
+
+
+//                HEADER
+
+.header{
+  margin-bottom: 30px;
+  &__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 270px;
+    width: 100%;
+    margin-bottom: 40px;
+    margin-left: auto;
+  }
+  &__svg{
+    cursor: pointer;
+  }
+  &__profile{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__icon{
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+    border: 2px solid $primary-color;
+    overflow: hidden;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__name{
+    font-family: $font-family-Inter;
+    font-size: $standart-fz;
+    font-weight: 400;
+  }
+  &__bottom{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  &__title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: $font-family-Inter;
+    font-size: $title-fz;
+    svg{
+      cursor: pointer;
+    }
+  }
+  &__block{
+    max-width: 705px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+  }
+  &__button{
+    font-family: $font-family-Inter;
+    color: $contrast-color;
+    font-size: $standart-fz;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: $blue-color;
+  }
+  &__tabs{
+    display: flex;
+  }
+  &__tab{
+    display: flex;
+    gap: 8px;
+    font-family: $font-family-Inter;
+    font-size: $standart-fz;
+    padding: 8px 16px;
+    border: 1px solid $grey-light-color;
+    cursor: pointer;
+    @include transition();
+    &:hover{
+      border-color: $blue-color;
+    }
+    &:first-child{
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      margin-right: -1px;
+    }
+    &:last-child{
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      margin-left: -1px;
+    }
+    &_active{
+      border-color: $blue-color;
+    }
+  }
+  &__number{
+    font-family: $font-family-Inter;
+    font-size: $small-fz;
+    border-radius: 12px;
+    background: #E0EFFE;
+    padding: 2px 6px;
+  }
+  @media screen and (max-width: 768px) {
+    &__block{
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    &__tabs{
+      flex-direction: column;
+    }
+    &__tab{
+      &:first-child{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-right: 0;
+      }
+      &:last-child{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+
+//                TABLE
+
+
+.table{
+  width: 100%;
+  overflow-x: scroll;
+  table{
+    width: 100%;
+  }
+  &__head{
+    width: 100%;
+    display: flex;
+    background: $grey-color;
+    padding: 20px 0;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    .table__cell{
+      font-size: $standart-fz;
+      border-right: 1px solid $grey-light-color;
+      color: $primary-color;
+      &:last-child{
+        border: 0;
+      }
+    }
+  }
+  &__row{
+    width: 100%;
+    display: flex;
+    padding: 16px 0;
+    background: $contrast-color;
+    border-bottom: 1px solid $grey-color;
+    &:last-child{
+      border: 0;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+  &__cell{
+    font-family: $font-family-Inter;
+    font-size: $small-fz;
+    padding-right: 12px;
+    padding-left: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    &_first{
+      flex-basis: 28%;
+      color: $blue-color;
+    }
+    &_second{
+      flex-basis: 12%;
+    }
+    &_third{
+      flex-basis: 18%;
+    }
+    &_fourth{
+      flex-basis: 16%;
+    }
+    &_fifth{
+      flex-basis: 9.3%;
+      display: flex;
+      justify-content: center;
+    }
+    &_sixth{
+      flex-basis: 9.3%;
+      display: flex;
+      justify-content: center;
+    }
+    &_seventh{
+      flex-basis: 7.3%;
+      display: flex;
+      justify-content: center;
     }
   }
 }
