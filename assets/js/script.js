@@ -3,8 +3,8 @@ let sidebarBtn = document.querySelector(".sidebar__arrow");
 let container = document.querySelector(".container");
 
 sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("sidebar_hide")
-    sidebarBtn.classList.toggle("sidebar__arrow_hide")
+    sidebar.classList.toggle("sidebar_active")
+    sidebarBtn.classList.toggle("sidebar__arrow_active")
     container.classList.toggle("container_active")
 })
 
@@ -42,3 +42,4 @@ tab_btn_3.addEventListener("click", ()=>{
     tab_1.classList.remove("tabs__item_active");
     tab_2.classList.remove("tabs__item_active");
 })
+

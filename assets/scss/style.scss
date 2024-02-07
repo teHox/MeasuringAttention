@@ -19,6 +19,57 @@ main{
   display: flex;
 }
 
+.button{
+  font-family: $font-family-Inter;
+  color: $contrast-color;
+  font-size: $standart-fz;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: $blue-color;
+  cursor: pointer;
+  @include transition();
+  &:hover{
+    background: $blue-light-color;
+  }
+  &_disable{
+    background: $disabled-color;
+    color: $contrast-color;
+    cursor: not-allowed;
+    pointer-events: none;
+    &:hover{
+      background: $disabled-color;
+    }
+  }
+}
+
+input, textarea{
+  @include transition();
+  &::placeholder{
+    color: $grey-light-color;
+  }
+  &:hover{
+    border-color: $blue-color;
+  }
+  &:focus{
+    border-color: $blue-color;
+  }
+}
+
+select{
+  @include transition();
+  &:hover{
+    border-color: $blue-color;
+  }
+  &:focus{
+    border-color: $blue-color;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  option{
+    
+  }
+}
+
 .container{
   max-width: 1260px;
   width: 100%;
@@ -27,14 +78,17 @@ main{
   @include transition();
   &_active{
     max-width: 1260px;
-    padding: 30px 10px 20px 10px;
+    padding: 30px 10px 20px 240px;
   }
   @media screen and (max-width: 1410px) {
     max-width: 1160px;
     padding: 30px 10px 20px 90px;
     &_active{
-      padding: 30px 10px 20px 10px;
+      padding: 30px 10px 20px 315px;
     }
+  }
+  @media screen and (max-width: 768px){
+    padding: 30px 10px 20px 90px;
   }
 }
 
@@ -91,12 +145,37 @@ main{
     border-radius: 5px;
     font-size: $sub-title-fz;
     color: $primary-transparent-color;
+    @include transition();
+    svg{
+      path{
+        @include transition();
+      }
+    }
+    &:hover{
+      background: $blue-color-hover;
+    }
+    &:active{
+      color: $contrast-color;
+      background: $blue-color;
+      svg{
+        path{
+          fill: $contrast-color;
+        }
+      }
+      &:first-child{
+        svg{
+          path{
+            fill: none;
+          }
+        }
+      }
+    }
   }
   &__privacy{
     font-family: $font-family-Inter;
     position: absolute;
     bottom: 15px;
-    right: 10px;
+    right: 30px;
     font-size: 12px;
     color: #000;
   }
@@ -126,9 +205,58 @@ main{
   border-right: 1px solid $grey-color;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+
   @include transition();
-  &_hide{
-    left: -80px;
+  &_active{
+    width: 300px;
+    .sidebar__line{
+      width: 100%;
+    }
+    .sidebar__logo{
+      border: unset;
+      border-radius: unset;
+      width: 100%;
+      svg{
+        display: none;
+      }
+      p{
+        display: block;
+      }
+    }
+    .sidebar__menu{
+      width: 100%;
+    }
+    .sidebar__link{
+      width: 100%;
+      justify-content: flex-start;
+      gap: 12px;
+      &:hover{
+        .sidebar__tooltip{
+          color: $primary-color;
+        }
+      }
+      &_active{
+        .sidebar__tooltip{
+          color: $blue-color;
+        }
+      }
+    }
+    .sidebar__tooltip{
+      position: absolute;
+      opacity: unset;
+      background: transparent;
+      visibility: unset;
+      padding-left: 0;
+      padding-right: 0;
+      left: 18%;
+      color: #24222080;
+      &::after{
+        content: none;
+      }
+    }
+    .sidebar__bottom{
+      width: 100%;
+    }
   }
   &__arrow{
     @include flex();
@@ -141,27 +269,37 @@ main{
     border: 1px solid $background-color;
     border-radius: 8px;
     cursor: pointer;
-    @include transition();
     svg{
-      transform: rotate(180deg);
+      @include transition();
+      transform: rotate(0);
     }
-    &_hide{
-      transform: rotate(-180deg);
+    &_active{
+      svg{
+        transform: rotate(180deg);
+      }
     }
   }
   &__logo{
+    overflow: hidden;
     width: 44px;
     height: 44px;
     border: 1px solid $primary-transparent-color;
     border-radius: 50%;
     margin: 0 auto 0 auto;
     @include flex();
+    p{
+      font-family: $font-family-Montserrat;
+      font-weight: 600;
+      display: none;
+      font-size: $title-fz;
+    }
   }
   &__line{
     width: 32px;
     height: 2px;
     border-right: 1px;
     background: $grey-color;
+    @include transition();
   }
   &__menu{
     flex: 1;
@@ -172,9 +310,10 @@ main{
   &__link{
     position: relative;
     @include flex();
-    width: 40px;
+    max-width: 352px;
     height: 40px;
     border-radius: 8px;
+    padding: 0 10px;
     @include transition();
     svg{
       path{
@@ -244,12 +383,36 @@ main{
   &__block{
     position: relative;
     @include flex();
-    width: 40px;
+    padding: 0 10px;
     height: 40px;
     border-radius: 8px;
     @include transition();
     &:hover{
       background: $grey-color;
+    }
+    svg{
+      path{
+        @include transition();
+      }
+    }
+    &:first-child{
+      &:hover{
+        svg{
+          path{
+            fill: $primary-color;
+            fill-opacity: 1;
+          }
+        }
+      }
+    }
+    &:last-child{
+      &:hover{
+        svg{
+          path{
+            fill: #ED1D23;
+          }
+        }
+      }
     }
   }
 }
@@ -324,6 +487,19 @@ main{
     padding: 8px 16px;
     border-radius: 8px;
     background: $blue-color;
+    @include transition();
+    &:hover{
+      background: $blue-light-color;
+    }
+    &_disable{
+      background: $disabled-color;
+      color: $contrast-color;
+      cursor: not-allowed;
+      pointer-events: none;
+      &:hover{
+        background: $disabled-color;
+      }
+    }
   }
   &__tabs{
     display: flex;
@@ -339,6 +515,11 @@ main{
     @include transition();
     &:hover{
       border-color: $blue-color;
+      color: $blue-color;
+      .header__number{
+        color: $blue-color;
+        background: #E0EFFE;
+      }
     }
     &:first-child{
       border-top-left-radius: 8px;
@@ -352,18 +533,24 @@ main{
     }
     &_active{
       border-color: $blue-color;
+      color: $blue-color;
+      .header__number{
+        color: $blue-color;
+        background: #E0EFFE;
+      }
     }
   }
   &__number{
     font-family: $font-family-Inter;
     font-size: $small-fz;
     border-radius: 12px;
-    background: #E0EFFE;
+    background: $grey-color;
     padding: 2px 6px;
+    @include transition();
   }
   @media screen and (max-width: 768px) {
     &__block{
-      justify-content: space-between;
+      flex-direction: column;
       align-items: baseline;
     }
     &__tabs{
@@ -374,11 +561,13 @@ main{
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         margin-right: 0;
+        margin-bottom: -1px;
       }
       &:last-child{
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         margin-left: 0;
+        margin-top: -1px;
       }
     }
   }
@@ -610,6 +799,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     column-gap: 15px;
+    margin-top: 15px;
     row-gap: 10px;
   }
   &__participant{
@@ -648,6 +838,11 @@ main{
         background: transparent;
       }
     }
+  }
+  .button{
+    margin-top: 40px;
+    max-width: 230px;
+    margin-left: auto;
   }
   @media screen and (max-width: 768px) {
     &__group{
@@ -885,8 +1080,9 @@ main{
 .programs{
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 10px;
   &__item{
     max-width: 400px;
@@ -930,19 +1126,25 @@ main{
     padding: 8px 16px;
     align-items: center;
     background: transparent;
+    @include transition();
+    &:hover, &:active{
+      color: $blue-light-color;
+      border-color: $blue-light-color;
+    }
     &_unactive{
       border-color: $grey-light-color;
       color: $grey-light-color;
+      &:hover, &:active{
+        border-color: $grey-light-color;
+        color: $grey-light-color;
+      }
     }
   }
   @media screen and (max-width: 1000px) {
     flex-wrap: wrap;
     &__item{
       max-width: unset;
-      flex-basis: 49%;
-      &:last-child{
-        flex-basis: 100%;
-      }
+      flex-basis: 100%;
     }
   }
   @media screen and (max-width: 768px){
@@ -955,6 +1157,17 @@ main{
 
 //                TABS
 
+
+.tabs-container{
+  .header__block{
+    max-width: 343px;
+  }
+  @media screen and (max-width: 768px) {
+    .header__block{
+      max-width: unset;
+    }
+  }
+}
 
 .tabs{
   &__item{
@@ -1112,14 +1325,6 @@ main{
   &__minus{
     border-color: #ed1d23;
   }
-  &__button{
-    padding: 8px 16px;
-    font-family: $font-family-Inter;
-    font-size: $standart-fz;
-    color: $contrast-color;
-    background: $blue-color;
-    border-radius: 10px;
-  }
   @media screen and (max-width: 1140px) {
     &__table{
       overflow-x: scroll;
@@ -1129,6 +1334,92 @@ main{
     &__plus, &__minus{
       max-width: 400px;
       width: 100%;
+    }
+  }
+}
+
+
+/* Стили для основного контейнера выпадающего списка */
+.custom-select {
+  position: relative;
+  display: inline-block;
+}
+
+.select-selected{
+  position: relative;
+  margin-top: 8px;
+  cursor: pointer;
+  @include transition();
+  &_active{
+    border-radius: 8px 8px 0 0;
+    border-color: $blue-color;
+  }
+}
+
+/* Стили для элементов выпадающего списка */
+.select-items {
+
+  width: 100%;
+  overflow: hidden;
+  max-height: 250px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0 0 8px 8px;
+  z-index: 1;
+  opacity: 1;
+  cursor: pointer;
+  @include transition();
+  div{
+    padding: 8px 12px;
+    @include transition();
+    &:hover{
+      background-color: $blue-color-hover;
+    }
+  }
+
+}
+
+/* Скрытие выпадающего списка по умолчанию */
+.select-hide {
+  max-height: 0;
+  opacity: 0;
+}
+
+.select-arrow{
+  position: absolute;
+  top: 39px;
+  right: 0;
+  width: 40px;
+  height: 38px;
+  cursor: pointer;
+  &::after{
+    position: absolute;
+    content: '';
+    top: 5px;
+    left: 25px;
+    width: 2px;
+    height: 20px;
+    background: $grey-light-color;
+    transform: rotate(35deg);
+    @include transition();
+  }
+  &::before{
+    position: absolute;
+    content: "";
+    bottom: 13px;
+    right: 24px;
+    width: 2px;
+    height: 20px;
+    background: $grey-light-color;
+    @include transition();
+    transform: rotate(-35deg);
+  }
+  &_active{
+    &::after{
+      transform: rotate(145deg);
+    }
+    &::before{
+      transform: rotate(-145deg);
     }
   }
 }
