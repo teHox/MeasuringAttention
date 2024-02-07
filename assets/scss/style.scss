@@ -1280,12 +1280,20 @@ select{
     }
   }
   &__label{
-    display: flex;
+    font-family: $font-family-Inter;
+    font-size: $small-fz;
+    display: flex !important;
     flex-direction: column;
     align-items: baseline;
     max-width: 400px;
     width: 100%;
     margin-bottom: 25px;
+    .select-arrow{
+      top: 17px !important;
+    }
+    .select-items{
+      top: 100% !important;
+    }
   }
   &__sub-title{
     font-family: $font-family-Inter;

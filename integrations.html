@@ -379,22 +379,26 @@
             <div class="tabs__item" id="tab_2">
                 <h2 class="tabs__title">Webhook</h2>
                 <form class="tabs__form">
-                    <label class="tabs__label">
-                        <span class="tabs__sub-title">Формат даних</span>
-                        <select class="tabs__input">
-                            <option>JSON</option>
-                            <option>XML</option>
-                            <option>YAML</option>
-                        </select>
-                    </label>
-                    <label class="tabs__label">
-                        <span class="tabs__sub-title">Відправка вебхуків</span>
-                        <select class="tabs__input">
-                            <option>Відправляти</option>
-                            <option>Відправляти</option>
-                            <option>Відправляти</option>
-                        </select>
-                    </label>
+                    <div class="custom-select tabs__label">
+                        <div class="select-selected tabs__input">Формат даних
+                        </div>
+                        <div class="select-items select-hide">
+                            <div>JSON</div>
+                            <div>XML</div>
+                            <div>YAML</div>
+                        </div>
+                        <div class="select-arrow"></div>
+                    </div>
+                    <div class="custom-select tabs__label">
+                        <div class="select-selected tabs__input">Відправка вебхуків
+                        </div>
+                        <div class="select-items select-hide">
+                            <div>Відправляти</div>
+                            <div>Відправляти</div>
+                            <div>Відправляти</div>
+                        </div>
+                        <div class="select-arrow"></div>
+                    </div>
                     <div class="tabs__block">
                         <label class="tabs__label">
                             <span class="tabs__sub-title">Api Webhook</span>
@@ -487,6 +491,7 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/select.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
