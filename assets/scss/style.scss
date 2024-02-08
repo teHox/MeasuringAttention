@@ -471,6 +471,8 @@ select{
       display: flex;
     }
     svg{
+      max-width: 22px;
+      width: 100%;
       cursor: pointer;
     }
   }
@@ -573,7 +575,7 @@ select{
   }
   @media screen and (max-width: 420px) {
     &__title{
-      font-size: $sub-title-fz;
+      font-size: 18px;
     }
   }
 }
@@ -1403,10 +1405,10 @@ select{
   &::after{
     position: absolute;
     content: '';
-    top: 5px;
-    left: 25px;
+    top: 7px;
+    left: 23px;
     width: 2px;
-    height: 20px;
+    height: 15px;
     background: $grey-light-color;
     transform: rotate(35deg);
     @include transition();
@@ -1414,10 +1416,10 @@ select{
   &::before{
     position: absolute;
     content: "";
-    bottom: 13px;
+    bottom: 16px;
     right: 24px;
     width: 2px;
-    height: 20px;
+    height: 15px;
     background: $grey-light-color;
     @include transition();
     transform: rotate(-35deg);
